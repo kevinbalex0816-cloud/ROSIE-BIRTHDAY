@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <audio id="saopaulo" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSIE | THE COMPACT PACT 🌹</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root { --red: #ff4d4d; --ninja: #32cd32; --bmw: #0066cc; --gold: #ffd700; }
+        body { background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; overflow-x: hidden; }
+        
+        #particle-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.4; }
+        .falling-item { position: absolute; top: -50px; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        .main-wrapper { position: relative; z-index: 10; padding: 10px; }
+        .hero-section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        h1 { font-size: clamp(3rem, 12vw, 5rem); color: var(--red); margin: 0; font-family: 'Impact'; letter-spacing: 5px; text-shadow: 0 0 20px var(--red); }
+        
+        #countdown-timer { font-family: monospace; font-size: 1.2rem; color: var(--gold); border: 1px solid var(--red); padding: 10px 20px; margin-top: 15px; border-radius: 5px; background: rgba(0,0,0,0.8); }
+
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 15px; padding: 20px; max-width: 1400px; margin: 0 auto; }
+        .card { background: rgba(15, 15, 15, 0.95); border: 1px solid #333; padding: 25px; border-top: 3px solid var(--red); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card h2 { color: var(--gold); font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px; font-family: 'Impact'; }
+        .card p { font-size: 0.95rem; line-height: 1.6; color: #ddd; margin: 0; }
+        
+        .guest-book { max-width: 600px; margin: 50px auto; background: #0a0a0a; padding: 30px; border: 1px solid var(--gold); text-align: center; }
+        textarea { width: 100%; height: 100px; background: #111; color: white; border: 1px solid #333; padding: 15px; margin-top: 15px; resize: none; border-radius: 5px; }
+        .btn-send { background: var(--gold); color: black; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        .rev-btn { background: #000; border: 1px solid var(--ninja); color: white; padding: 8px 15px; cursor: pointer; margin-top: 10px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div id="particle-layer"></div>
+
+    <div class="main-wrapper">
+        <section class="hero-section">
+            <p style="color:var(--gold); letter-spacing: 3px; font-size: 0.9rem;">✨ ROSIE'S COMPACT PACT ✨</p>
+            <h1>ROSIE</h1>
+            <div id="countdown-timer">⌛ 00d 00h 00m 00s 🎂</div>
+            <button onclick="start()" style="background:var(--red); color:white; border:none; padding:15px 35px; cursor:pointer; font-weight:bold; margin-top:20px; font-family: 'Impact';">OPEN THE CHAOS 🎵</button>
+        </section>
+
+        <div class="grid-container">
+            <div class="card">
+                <h2>Chapter 01: The White Room 🎮</h2>
+                <p>Since April 20, 2025, my life has basically been one long gaming session with you. You were playing White Room when we met, and Honestly, before you showed up, I was just a NPC in my own life. Now, every day feels like a DLC that I actually want to play. I’m so glad that Kaku decided to introduce us. You are the 10/10 friend I never knew I needed in this world. Let’s keep playing until the end. 🤝🔥</p>
+            </div>
+
+            <div class="card" style="border-top-color: var(--ninja);">
+                <h2>Chapter 02: Revving Engines 🏍️</h2>
+                <p>I know you like Kawasaki Ninja and BMW, which proves you have expensive taste! I can already see us  stalling a bike in the middle of a road because we’re laughing too hard. let's be real. One day, the roar of that engine will be our soundtrack for real. Click these buttons to hear the sounds of us probably getting a speeding ticket together. 🏎️💨</p>
+                <div>
+                    <button class="rev-btn" onclick="synthRev(80)">🏍️ NINJA</button>
+                    <button class="rev-btn" style="border-color:var(--bmw)" onclick="synthRev(50)">🏎️ BMW</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Chapter 03: The Nightmare Pact 🌙</h2>
+                <p>Every time you tell me to "Have Nightmares," I wonder if you’re a secret villain in a dark romance novel. You say it so casually that I’ve actually started checking under my bed for monsters! But honestly, those "Nighty Nighty" messages are the only reason I sleep well at all. I miss those late night talks where we both made zero sense but laughed anyway. We’ve shared enough secrets to start a podcast that would probably get us both banned. I hope we keep talking like this until we’re both old. 🌙😈</p>
+            </div>
+
+            <div class="card" style="border-top-color: var(--ninja);">
+                <h2>Chapter 04: Snowy Ambitions ❄️</h2>
+                <p>I want us to go to the snowy place so I can finally see if you’re actually a professional snowball fighter. I bet you’d hide a rock in a snowball just to win the match, wouldn't you? We’d be abroad, freezing our noses off, and you’d still be complaining about the lag in real life. Seeing you happy in the snow is literally on my bucket list. I want to build a snowman that looks exactly like you,and I’m not letting you face any storm alone. ❄️⛄</p>
+            </div>
+
+            <div class="card">
+                <h2>Chapter 05: Loyalty & Defense 😤</h2>
+                <p>You are the most loyal person I know, which is lucky for me because I’m a handful. I can read your moods just by which emoji you spam in the chat box. When I see that 😤 emoji, I know it’s time for me to go into "defense mode." You’re always helping people out, even when they probably don’t deserve your gold-standard kindness. It’s rare to find someone who is as real and honest as you are these days. I promise to be the teammate who always has your back. ❤️🤝</p>
+            </div>
+
+            <div class="card" style="border-top-color: var(--ninja);">
+                <h2>Chapter 06: The Human Shield 🏚️</h2>
+                <p>If we ever go to an abandoned hospital together, I am definitely using you as a human shield. You’d probably be the one trying to make friends with the ghosts while I’m running for the exit. We’d find some creepy old diary and you’d try to turn it into a dark romance plot. It’s those weird, fun adventures that make me so glad we met. I want to help you leave all your past ghosts behind and start a new chapter. You deserve a life that feels like a main character moment. 🏚️🌹</p>
+            </div>
+
+            <div class="card">
+                <h2>Chapter 07: The 10/10 Human ✨</h2>
+                <p>I honestly think you’re a 10/10 human, even if you do play games way better than me. You’ve had a tough year, but the future is looking cold, snowy, and perfect. In between the jokes, I want you to know I’ll always be the person who brings the heater. I’ll keep sending you roses and reels until you finally admit I’m your favorite person. We’re going to make so many memories that we’ll forget why we were ever sad. Keep being the chaos I enjoy so much. 💫💎</p>
+            </div>
+
+            <div class="card" style="border-top-color: var(--ninja);">
+                <h2>Chapter 08: The late night talks 🎙️</h2>
+                <p>Our late-night talks are the highlight of my digital life. Whether we are discussing the future or just talking absolute nonsense, you have a way of making everything feel easy. You’ve got this chaotic energy that makes even a boring chat feel like a boss fight. You’re the only person who can insult me and make me smile at the same time. I promise to be here for every nightmare and every dream you ever have. You're stuck with me now, so prepare for 50 years of this. 👑🔥</p>
+            </div>
+
+            <div class="card">
+                <h2>Chapter 09: Freedom & Speed 🏎️</h2>
+                <p>Those machines you dream of represent the freedom I want for you. I want us to feel that wind and speed while we leave all the drama behind us. Even if we end up lost on a highway, it’ll be a great story. One day, the roar of that Kawasaki or the purr of that BMW will be the background noise to our real-life adventures. You deserve to drive toward a future that is as fast and exciting as you are. The road is open, and I'm riding shotgun. 🏁✨</p>
+            </div>
+
+            <div class="card" style="border-top-color: var(--ninja);">
+                <h2>Chapter 10: The Pact Sealed 🤝</h2>
+                <p>So, here it is—the official Compact Pact. From the White Room to the snowy roads abroad, we’ve come a long way since April. You’re the teammate I choose every single time, lag or no lag. No matter what the next "level" of life throws at us, we’re tackling it together. Happy Birthday princess. I hope this chaos made you smile, because you deserve it more than anyone I know. The pact is sealed, the roses are sent, and the nightmares are ready. 🌹🤝</p>
+            </div>
+        </div>
+                   <div class="card" style="border-top-color: var(--ninja);">
+                <h2>SORRRRRYYYYY🥹🥹</h2>
+                <p>"Hey Rosie, with your birthday coming up on the 17th, I’ve been doing some thinking about us. I wanted to reach out and sincerely apologize for my behavior over this past year. I know I haven’t been the friend I should have been, and I truly regret that.
+​I’m also really sorry about the book. I know I promised it to you for your birthday, and I feel terrible that I couldn't make it happen. I hate that I let you down on something special. I really value our friendship, and I hope we can move forward. I’d love to make it up to you and start this next year of your life on a better note."</p>
+            </div>
+        </div>
+
+        <div class="guest-book">
+            <h2>📝 ROSIE'S CORNER 🌹</h2>
+            <p>Tell me how much you liked this, or just tell me to go have a nightmare. 😂</p>
+            <textarea id="guestMsg" placeholder="Type here, Gulab... ✍️"></textarea>
+            <button class="btn-send" onclick="sendMsg()">SEAL THE PACT 🤝</button>
+        </div>
+    </div>
+
+    <audio id="saopaulo" loop><source src="saopaulo.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        const targetDate = new Date("Jan 17, 2026 00:00:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime(); const d = targetDate - now;
+            document.getElementById("countdown-timer").innerHTML = `⌛ ${Math.floor(d/(1000*60*60*24))}d ${Math.floor((d%(1000*60*60*24))/(1000*60*60))}h ${Math.floor((d%(1000*60*60))/(1000*60))}m ${Math.floor((d%(1000*60))/1000)}s 🎂`;
+        }
+        setInterval(updateCountdown, 1000);
+
+        const pLayer = document.getElementById('particle-layer');
+        const pTypes = ['❄️', '✨', '🌹', '❄️'];
+        function createP() {
+            const p = document.createElement('div'); p.className = 'falling-item';
+            p.innerHTML = pTypes[Math.floor(Math.random() * pTypes.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = (Math.random() * 18 + 10) + 'px';
+            p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            pLayer.appendChild(p); setTimeout(() => p.remove(), 10000);
+        }
+        setInterval(createP, 300);
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function synthRev(freq) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.type = 'sawtooth'; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(freq * 5, audioCtx.currentTime + 0.1);
+            osc.frequency.exponentialRampToValueAtTime(freq, audioCtx.currentTime + 0.5);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.5);
+            confetti({ particleCount: 50 });
+        }
+        function start() { audioCtx.resume(); document.getElementById("saopaulo").play().catch(e=>console.log("Music error")); window.scrollBy({ top: 500, behavior: 'smooth' }); }
+        function sendMsg() { confetti({ particleCount: 200 }); alert("Message received! Nighty Nighty, Rosie! 🌹"); }
+    </script>
+</body>
